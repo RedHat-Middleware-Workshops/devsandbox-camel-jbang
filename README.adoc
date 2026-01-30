@@ -1,3 +1,5 @@
+:experimental:
+
 = Camel JBang - First steps
 
 _Camel JBang_ is a command-line interface (CLI) that helps you run, iterate, and test your _Apache Camel_ applications without complex setups. It accelerates prototyping: create, validate, and tweak flows quickly—ideal for rapid experimentation and for getting a feel of what _Camel_ can do.
@@ -6,7 +8,11 @@ image::docs/labs/intro-cjbang/images/camel-jbang.png[width=48%]
 
 This guide gives you a short, hands-on introduction. You'll use a small game to discover a few core commands and see how much you can do with _Camel JBang_ from the terminal.
 
-== Camel JBang at play
+image::docs/labs/intro-cjbang/images/tennis-illustration.jpg[width=100%]
+
+== Getting started
+
+Make sure you have _Camel JBang_ installed in your environment. If not, see the link:https://camel.apache.org/manual/camel-jbang.html#_installation[Installation] section in the Camel JBang manual.
 
 === Find your terminal
 
@@ -34,7 +40,7 @@ image::docs/labs/intro-cjbang/images/crw-terminal.png[align="left", width=100%]
 
 The instructions that follow will ask you to run commands. Run them from your terminal.
 
-=== Playing a game with Camel JBang
+=== Playing the tennis game with Camel JBang
 
 Playing is a great way to learn. Here we'll use a small game to discover a few things _Camel JBang_ can do.
 
@@ -124,7 +130,7 @@ image::docs/labs/intro-cjbang/images/court-side2-ball.jpg[width=14%]
 
 *Note:* With only one player, the ball ends up on the other side and stays there.
 
-Before continuing, stop player1 with *Ctrl+C*.
+Before continuing, stop player1 with kbd:[Ctrl+C].
 
 === The ball boy
 
@@ -186,7 +192,7 @@ On the court, the ball will have been cleared:
 
 image::docs/labs/intro-cjbang/images/court-clear.jpg[width=14%]
 
-Let player1 practice a bit more, then press *Ctrl+C* to stop.
+Let player1 practice a bit more, then press kbd:[Ctrl+C] to stop.
 
 === Set up the tournament
 
@@ -219,7 +225,7 @@ EOF
 
 To run a proper "tournament":
 
-. Stop any running routes. Press *Ctrl+C* if something is still running.
+. Stop any running routes. Press kbd:[Ctrl+C] if something is still running.
 . Start the ball boy first (in the background):
 +
 [source,bash]
