@@ -2,7 +2,7 @@
 
 _Camel JBang_ is a command-line interface (CLI) that helps you run, iterate, and test your _Apache Camel_ applications without complex setups. It accelerates prototyping: create, validate, and tweak flows quickly—ideal for rapid experimentation and for getting a feel of what _Camel_ can do.
 
-image::docs/labs/intro-cjbang/images/camel-jbang.png[width=55%]
+image::docs/labs/intro-cjbang/images/camel-jbang.png[width=48%]
 
 This guide gives you a short, hands-on introduction. You'll use a small game to discover a few core commands and see how much you can do with _Camel JBang_ from the terminal.
 
@@ -46,7 +46,7 @@ Copy and paste the following into your terminal to create the `player1.yaml` fil
 
 NOTE: If your terminal asks to confirm the paste, you can tick "✓ Do not ask me again" and click *Paste*.
 
-image::docs/labs/intro-cjbang/images/paste-multiline.jpg[width=50%]
+image::docs/labs/intro-cjbang/images/paste-multiline.jpg[width=40%]
 
 [source,bash]
 ----
@@ -97,7 +97,7 @@ Player1 is ready. Give them a 🥎.
 
 From the terminal's top-right corner, click *+* to open a second terminal:
 
-image::docs/labs/intro-cjbang/images/terminal-plus.jpg[width=50%]
+image::docs/labs/intro-cjbang/images/terminal-plus.jpg[width=40%]
 
 In the new terminal, use _Camel JBang_ to send a ball to player1:
 
@@ -110,7 +110,7 @@ camel cmd send player1 --header CamelFileName=🥎
 
 Switch back to the first terminal where player1 is running:
 
-image::docs/labs/intro-cjbang/images/terminal-one.jpg[width=40%]
+image::docs/labs/intro-cjbang/images/terminal-one.jpg[width=32%]
 
 You should see player1 hitting the ball to the other side. Example output:
 
@@ -120,7 +120,7 @@ You should see player1 hitting the ball to the other side. Example output:
 
 Check the court: the ball should be on the other side:
 
-image::docs/labs/intro-cjbang/images/court-side2-ball.jpg[width=20%]
+image::docs/labs/intro-cjbang/images/court-side2-ball.jpg[width=14%]
 
 *Note:* With only one player, the ball ends up on the other side and stays there.
 
@@ -184,7 +184,7 @@ In the logs you should see the ball boy at work. Example output:
 
 On the court, the ball will have been cleared:
 
-image::docs/labs/intro-cjbang/images/court-clear.jpg[width=20%]
+image::docs/labs/intro-cjbang/images/court-clear.jpg[width=14%]
 
 Let player1 practice a bit more, then press *Ctrl+C* to stop.
 
@@ -283,7 +283,7 @@ That's a rally.
 
 You can also see the ball file moving on disk (court/side1 and court/side2):
 
-image::docs/labs/intro-cjbang/images/court-rally.jpg[width=35%]
+image::docs/labs/intro-cjbang/images/court-rally.jpg[width=26%]
 
 Player1 stops to tie their laces. Stop their route:
 
