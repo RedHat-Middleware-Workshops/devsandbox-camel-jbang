@@ -24,6 +24,8 @@ This chapter is a short introduction to *Camel JBang* and a basic set of command
 
 The first time, your `lab` directory is empty:
 
+Example:
+
 ```
 📁 workshop
    📁 lab    (empty)
@@ -77,15 +79,15 @@ camel run player1.yaml
 
 **Note:** There are no dependency descriptors or extra files—*Camel JBang* reads `player1.yaml` and runs the route.
 
-In your terminal you’ll see player1 ready, for example:
+In your terminal you’ll see player1 ready. Example output:
 
-```
+```text
 2025-10-26 12:40:32.210 INFO 2243 --- [           main] e.camel.impl.engine.AbstractCamelContext : Apache Camel 4.15.0 (player1) started in 242ms ...
 ```
 
-In your folder you’ll see where player1 is waiting for balls:
+In your folder you’ll see where player1 is waiting for balls. Example:
 
-```
+```text
 ❯ lab ❯ court/side1
 ```
 
@@ -109,9 +111,9 @@ Switch back to the first terminal where player1 is running:
 
 <img src="images/terminal-one.jpg" alt="Terminal one" width="25%" />
 
-You should see player1 hitting the ball to the other side:
+You should see player1 hitting the ball to the other side. Example output:
 
-```
+```text
 2025-10-26 12:50:12.951 INFO 2243 --- [e://court/side1] player1.yaml:8 : (ping)⋅⋅⋅━━━► 🥎
 ```
 
@@ -160,7 +162,7 @@ When you’re ready, start everything with:
 camel run *
 ```
 
-**Note:** *Camel JBang* supports a `*` wildcard when you have multiple route files. It also picks up property files. You can use an optional `game.properties` like this:
+**Note:** *Camel JBang* supports a `*` wildcard when you have multiple route files. It also picks up property files. Optional example file `game.properties` (for reference only; you don't run this in the terminal):
 
 ```properties
 # Ball pace (millis) when players hit. Lower value is faster.
@@ -170,9 +172,9 @@ pace=3000
 wait=6000
 ```
 
-In the logs you should see the ball boy at work:
+In the logs you should see the ball boy at work. Example output:
 
-```
+```text
 2025-10-26 18:23:53.558 INFO 20299 --- [r://check-court] the-ballboy.yaml:17 : 🥎 cleared, court ready.
 ```
 
@@ -257,9 +259,9 @@ Player1 serves. Send a ball:
 camel cmd send player1 --header CamelFileName=🥎
 ```
 
-In the terminal you should see both players hitting the ball:
+In the terminal you should see both players hitting the ball. Example output:
 
-```
+```text
 player1    | 2025-10-26 19:01:36.006 INFO 22363 --- [e://court/side1] player1.yaml:8 : (ping)⋅⋅⋅━━━► 🥎
 player2    | 2025-10-26 19:01:39.106 INFO 22578 --- [e://court/side2] player2.yaml:8 :       🥎 ◄━━━⋅⋅⋅(pong)
 player1    | 2025-10-26 19:01:42.509 INFO 22363 --- [e://court/side1] player1.yaml:8 : (ping)⋅⋅⋅━━━► 🥎
@@ -279,9 +281,9 @@ Player1 stops to tie their laces. Stop their route:
 camel cmd stop-route --id player1
 ```
 
-You’ll see player2 hit once more, player1 stop, and the ball boy clear the ball:
+You’ll see player2 hit once more, player1 stop, and the ball boy clear the ball. Example output:
 
-```
+```text
 player2    | ... :       🥎 ◄━━━⋅⋅⋅(pong)
 player1    | ... : Stopped player1 (file://court/side1)
 the-ballboy| ... : 🥎 cleared, court ready.
@@ -297,7 +299,7 @@ camel get route
 
 Example output:
 
-```
+```text
   PID   NAME         ID       FROM                            REMOTE  STATUS    AGE   COVER  MSG/S  TOTAL  FAIL  INFLIGHT  MEAN  MIN   MAX   LAST  DELTA  SINCE-LAST
  22140  the-ballboy  ballboy  timer://check-court                     Started   6m3s    2/2   1.00    363     0         0     2     0   841     0      0            0s/0s/-
  22363  player1      player1  file://court/side1?delete=true    x     Stopped           3/3   0.00     25     2         0  2001  2001  2007  2001      0  1m31s/1m29s/1m41s
@@ -333,16 +335,16 @@ While the rally is going, edit the files:
 
 **Note:** With `--dev`, *Camel JBang* reloads the routes and the new behavior takes effect without restarting.
 
-In the logs you’ll see reload messages, for example:
+In the logs you’ll see reload messages. Example output:
 
-```
+```text
 player1    | ... RouteWatcherReloadStrategy : Routes reloaded summary (total:1 started:1)
 player1    | ... RouteWatcherReloadStrategy : Started player1 (file://court/side1) (source: player1.yaml:4)
 ```
 
-Then the slower “p1ng” / “p0ng” messages:
+Then the slower “p1ng” / “p0ng” messages. Example output:
 
-```
+```text
 player2    | ... :       🥎 ◄━━━⋅⋅⋅(p0ng)
 player1    | ... : (p1ng)⋅⋅⋅━━━► 🥎
 ...
