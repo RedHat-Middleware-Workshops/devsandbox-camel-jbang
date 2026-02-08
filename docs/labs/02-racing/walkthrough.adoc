@@ -175,13 +175,13 @@ endif::[]
 [id='full-throttle']
 = Camel JBang - Full Throttle
 
-Jump into Camel JBang with a thrilling motor racing simulation — prototype, iterate, and test your integrations at maximum speed.
+Jump into Camel JBang with a thrilling motor racing simulation. Prototype, iterate, and test your integrations at maximum speed.
 
-_Camel JBang_ is a command-line interface (CLI) that accelerates prototyping by letting developers quickly create, validate, and tweak flows without complex setups, making it perfect for rapid experimentation.
-
-image::images/camel-jbang.png[align="left", width=40%]
+image::images/illustration.jpg[align="left", width=80%]
 
 {empty} +
+
+This chapter is an introductory taste of _Camel JBang_ showing you a basic group of commands. Hopefully you'll get to see how much you can sharpen your axe when making a good use of _Camel JBang_. 
 
 [NOTE]
 ====
@@ -197,13 +197,17 @@ Familiarity with Apache Camel is helpful but not required to complete this lab. 
 == Build a racing track
 {style-all}
 
-When developers are tasked to deliver a solution, prototyping and experimentation are crucial. _Camel JBang_ is one of those key prototyping tools.
+This chapter is an introductory taste of _Camel JBang_ in a motoracing context: a racing track with three sectors and a boxes area, plus racing teams that participate in practice and race sessions, each with a livery and team radio.
+
+//When developers are tasked to deliver a solution, prototyping and experimentation are crucial. _Camel JBang_ is one of those key prototyping tools.
+
+_Camel JBang_ is a command-line interface (CLI) that accelerates prototyping by letting developers quickly create, validate, and tweak flows without complex setups, making it perfect for rapid experimentation.
 
 image::images/camel-jbang.png[align="left", width=40%]
 
-{empty} +
+// {empty} +
 
-This chapter is an introductory taste of _Camel JBang_ in a motoracing context: a racing track with three sectors and a boxes area, plus racing teams that participate in practice and race sessions, each with a livery and team radio.
+
 
 {empty} +
 

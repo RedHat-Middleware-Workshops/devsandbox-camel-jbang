@@ -1,53 +1,72 @@
-= Camel JBang - First steps
+= Camel JBang - Tennis Rally
 
-Familiarise yourself with the prototyping tool helping you to run, iterate and test your Camel applications.
+Serve winners by familiarising yourself with the prototyping tool  that helps you run, iterate and test your Camel applications. 
+
+image::images/tennis-illustration.jpg[align="left", width=80%]
+
+This chapter is an introductory taste of _Camel JBang_ showing you a basic group of commands. Hopefully you'll get to see how much you can sharpen your axe when making a good use of _Camel JBang_. 
+
+[NOTE]
+====
+Familiarity with Apache Camel is helpful but not required to complete this lab. If you have little or no prior experience, consider reviewing an introduction to Enterprise Integration Patterns and Apache Camel first:
+
+* link:https://developers.redhat.com/products/red-hat-build-of-apache-camel[Red Hat build of Apache Camel (enterprise-focused overview),window="_blank", , id="rhd-apache-camel"]
+====
+
+This chapter is recommended to understand how _Camel JBang_ helps you work fast with _Apache Camel_
+
+{empty} +
+
+== Camel JBang at play
 
 _Camel JBang_ is a command-line interface (CLI) that accelerates prototyping by letting developers quickly create, validate, and tweak flows without complex setups, making it perfect for rapid experimentation.
 
 image::images/camel-jbang.png[width=40%]
 
-This chapter is recommended to understand how _Camel JBang_ helps you work fast with _Apache Camel_.
+{empty} +
 
-'''
+=== Open a terminal
 
-== Camel JBang at play
+Whether you're working in your local machine or from Dev Spaces, you'll need to open a terminal. If you're working locally we recommend using VS Code as the examples below are based on this editor, but you can use any other terminal you prefer.
 
-When developers are tasked to deliver a solution, prototyping and experimentation are crucial to finding the best path forward, especially when adopting new, unfamiliar tools and techniques.
+Open a terminal following the steps illustrated below (Dev Spaces example):
 
-_Camel JBang_ is one of those key prototyping tools.
+image::images/terminal-open.png[width=40%]
 
-image::images/camel-jbang.png[width=40%]
+The picture below shows the terminal in VS Code.
 
-This chapter is an introductory taste of _Camel JBang_ showing you a basic group of commands. Hopefully you'll get to see how much you can sharpen your axe when making a good use of _Camel JBang_.
+image::images/terminal.png[width=100%]
 
-=== Find your terminal
+Copy and paste the following into your terminal:
 
-The first time, your `lab` directory is empty:
+[source,bash]
+----
+mkdir lab
+cd lab
+----
 
-.Example:
+image::images/terminal-copypaste.png[width=50%]
 
+When created the first time, your `lab` directory is empty:
+
+.Example
 ----
 📁 workshop
    📁 lab    (empty)
 ----
 
-For this exercise, work from your terminal. Find it as shown below.
-
-image::images/crw-terminal.png[width=100%]
-
-The following steps will ask you to run commands. Run them in your terminal.
-
 === Playing a game with Camel JBang
 
-Playing is a great way to learn. Here we'll use a small game to discover a few things _Camel JBang_ can do.
+They say playing is a great way to learn, so let's play for a bit. While you're at it you'll discover a few tricks _Camel JBang_ has in the bag.
 
-NOTE: Later we'll go deeper into the core of the workshop.
+NOTE: Later, we'll get serious when diving into the core of the workshop.
 
-Pretend we're organizing a tennis tournament. First, *player1*:
+Pretend we're about to organise a tennis tournament.
+Let us introduce to you **player1**:
 
-Copy and paste the following into your terminal to create the `player1.yaml` file:
+Copy and paste the following into your terminal to create the `player1.yaml` file.
 
-NOTE: If your terminal asks to confirm the paste, you can tick "✓ Do not ask me again" and click *Paste*.
+NOTE: You'll be asked to confirm the paste action, tick "✓ Do not ask me again" and click *Paste*.
 
 image::images/paste-multiline.jpg[width=30%]
 
@@ -70,25 +89,25 @@ cat <<EOF > player1.yaml
 EOF
 ----
 
-*Note:* player1 is on one side of the court and hits every ball. When hitting, the ball crosses the court (at a given pace) to the other side.
+NOTE: `player1` one plays on one side of the court and hits every ball that comes his way. When hitting the ball, it crosses the court (at a given pace) to the other side.
 
-Run this to get player1 on the court:
+Run this command to get `player1` on the court, ready to play:
 
 [source,bash]
 ----
 camel run player1.yaml
 ----
 
-*Note:* There are no dependency descriptors or extra files—_Camel JBang_ reads `player1.yaml` and runs the route.
+NOTE: Observe the simplicity of it all, no more than one player in the game, no dependency descriptors, no additional files needed to run the show. _Camel JBang_ figures all out, it reads `player1` and provides all that is needed to the run the game.
 
-In your terminal you'll see player1 ready. Example output:
+In your terminal you'll see `player1` ready:
 
 .Example output
 ----
 2025-10-26 12:40:32.210 INFO 2243 --- [           main] e.camel.impl.engine.AbstractCamelContext : Apache Camel 4.15.0 (player1) started in 242ms ...
 ----
 
-In your folder you'll see where player1 is waiting for balls. Example:
+Also, watching closely your folder structure, you'll see on which side `player1` stands waiting for balls:
 
 ----
 ❯ lab ❯ court/side1
@@ -96,44 +115,45 @@ In your folder you'll see where player1 is waiting for balls. Example:
 
 === Throw a ball
 
-Player1 is ready. Give them a 🥎.
+`player1` is ready. Give him a 🥎.
 
-From the terminal's top-right corner, click *+* to open a second terminal:
+From the terminal's top right corner, click `+` to open a second terminal, as shown below:
 
 image::images/terminal-plus.jpg[width=30%]
 
-In the new terminal, use _Camel JBang_ to send a ball to player1:
+From the new terminal, use _Camel JBang_ to hand a ball to `player1`:
 
-TIP: The `send` command is useful for testing: you can send balls to routes and see what happens.
+TIP: The `send` command is very helpful to test the game, you can throw balls to players and see what happens.
 
 [source,bash]
 ----
 camel cmd send player1 --header CamelFileName=🥎
 ----
 
-Switch back to the first terminal where player1 is running:
+Get back to the first terminal where `player1` is running:
 
 image::images/terminal-one.jpg[width=25%]
 
-You should see player1 hitting the ball to the other side. Example output:
+Inspect the terminal's output, you should see `player1` hitting the ball to the other side of the court:
 
+.Example output
 ----
 2025-10-26 12:50:12.951 INFO 2243 --- [e://court/side1] player1.yaml:8 : (ping)⋅⋅⋅━━━► 🥎
 ----
 
-Check the court: the ball should be on the other side:
+Have a look to the court. You should see the ball resting on the other side:
 
 image::images/court-side2-ball.jpg[width=8%]
 
-*Note:* With only one player, the ball ends up on the other side and stays there.
+NOTE: The downside of playing tennis with a single player is that balls end up motionless on the other side of the court.
 
-Before continuing, stop player1 with *Ctrl+C*.
+Before we continue, give `player1` some rest. Stop the action with *Ctrl+C*.
 
 === The ball boy
 
-Next we add the ball boy to keep the court tidy.
+We introduce to you the ball boy, he will ensure the court is always tidy.
 
-Copy and paste this into your terminal to create `the-ballboy.yaml`:
+Copy and paste the following into your terminal to create the `the-ballboy.yaml` file:
 
 [source,bash]
 ----
@@ -159,16 +179,16 @@ cat <<EOF > the-ballboy.yaml
 EOF
 ----
 
-*Note:* In _Camel_, some tasks need a bit of logic. The ball boy uses _Groovy_ to check both sides of the court and remove any ball that has been sitting for too long (6 seconds).
+NOTE: In _Camel_, certain tasks require agility. Notice the ballboy making use of _Groovy_ to look at both sides of the court, and retrieve any ball sitting on the court for too long (6 seconds).
 
-When you're ready, start everything with:
+When you see everyone ready, use the command below to restart:
 
 [source,bash]
 ----
 camel run *
 ----
 
-*Note:* _Camel JBang_ supports a `*` wildcard when you have multiple route files. It also picks up property files. Optional example file `game.properties` (for reference only; you don't run this in the terminal):
+NOTE: _Camel JBang_ makes things easy: use the `*` wildcard when you have multiple individuals on court. The wildcard also picks up property files where you can configure a different game behaviour. Here's a file (optional example) `game.properties` you could use:
 
 [source,properties]
 ----
@@ -179,25 +199,26 @@ pace=3000
 wait=6000
 ----
 
-In the logs you should see the ball boy at work. Example output:
+Inspect the terminal logs, you should see the ball boy already at work:
 
+.Example output
 ----
 2025-10-26 18:23:53.558 INFO 20299 --- [r://check-court] the-ballboy.yaml:17 : 🥎 cleared, court ready.
 ----
 
-On the court, the ball will have been cleared:
+Look also at the court. You'll notice the ball has been cleared:
 
 image::images/court-clear.jpg[width=8%]
 
-Let player1 practice a bit more, then press *Ctrl+C* to stop.
+Let `player1` practice a bit more. When done, press *Ctrl+C* to give him some rest.
 
 === Set up the tournament
 
-Practice is over; time for a real game.
+Ok, practice is over, let's organise a real game.
 
-You need a second player. Here is *player2*:
+For a proper game to take place, you need more than just one player. We introduce to you `player2`:
 
-Copy and paste to create `player2.yaml`:
+Copy and paste the following into your terminal to create the `player2.yaml` file:
 
 [source,bash]
 ----
@@ -218,20 +239,20 @@ cat <<EOF > player2.yaml
 EOF
 ----
 
-*Note:* Each player does one job: receive from one side and send to the other.
+NOTE: These players really train for doing just one thing.
 
-To run a proper "tournament":
+Because this is a prestigious tournament, there's a protocol to follow:
 
-. Stop any running routes. Press *Ctrl+C* if something is still running.
-. Start the ball boy first (in the background):
+. Let spectators sit comfortably while players and staff wait in the locker rooms. Press *Ctrl+C* (if you didn't already) to follow on with preparations.
+. Let the ball boy go on court first to get ready:
 +
 [source,bash]
 ----
 camel run the-ballboy.yaml --background
 ----
 +
-The `--background` flag runs the process detached.
-. Start both players (in the background, with live reload):
+NOTE: The flag `--background` indicates _Camel JBang_ to run the process detached.
+. Present the players to the public and let them jump on court:
 +
 [source,bash]
 ----
@@ -243,37 +264,38 @@ camel run player1.yaml --background --dev
 camel run player2.yaml --background --dev
 ----
 +
-The `--dev` flag enables live code reload (e.g. when you change the route).
-. Check that everyone is running:
+NOTE: The flag `--dev` indicates _Camel JBang_ to do live code reloads (new racket for example).
+. Before the game starts, check everyone is ready:
 +
 [source,bash]
 ----
 camel ps
 ----
 +
-*Note:* `ps` shows which routes are running and their status.
-. Watch the logs:
+NOTE: The `ps` command is handy to check who's playing and who's not, who's ready and who's not, and who's busy and who's not.
+. Join the crowd and enjoy watching the game:
 +
 [source,bash]
 ----
 camel log
 ----
 +
-*Note:* `log` aggregates output from all running routes. You can also follow a single route, e.g. `camel log player1`.
+NOTE: The `log` command aggregates all the action on court so that you're aware of all that's happening. You can also focus on one single player, or even the ball boy if curious of what the job entails. For example to focus on player 1, you would run `camel log player1`.
 
-The ball boy and both players should be ready.
+Ok, the ball boy is ready, the players are ready, and the public is anxious waiting to see the game start.
 
 === Let the game begin
 
-Player1 serves. Send a ball:
+`player1` starts serving, hand him a 🥎
 
 [source,bash]
 ----
 camel cmd send player1 --header CamelFileName=🥎
 ----
 
-In the terminal you should see both players hitting the ball. Example output:
+Inspect your terminal output, you should see both players hitting the ball hard:
 
+.Example output
 ----
 player1    | 2025-10-26 19:01:36.006 INFO 22363 --- [e://court/side1] player1.yaml:8 : (ping)⋅⋅⋅━━━► 🥎
 player2    | 2025-10-26 19:01:39.106 INFO 22578 --- [e://court/side2] player2.yaml:8 :       🥎 ◄━━━⋅⋅⋅(pong)
@@ -282,21 +304,22 @@ player2    | 2025-10-26 19:01:45.610 INFO 22578 --- [e://court/side2] player2.ya
 ...
 ----
 
-That's a rally.
+It's a long rally !
 
-You can also see the ball file moving on disk (court/side1 and court/side2):
+Also, see the ball on the court going back and forth:
 
 image::images/court-rally.jpg[width=18%]
 
-Player1 stops to tie their laces. Stop their route:
+But `player1` feels the laces of his shoe are loose and has to stop to tie them up. Run the command:
 
 [source,bash]
 ----
 camel cmd stop-route --id player1
 ----
 
-You'll see player2 hit once more, player1 stop, and the ball boy clear the ball. Example output:
+Because `player1` stopped hitting the ball, spectators will see `player2` hitting one last time, `player1` tying up his shoe laces, and the ball boy retrieving the ball:
 
+.Example output
 ----
 player2    | ... :       🥎 ◄━━━⋅⋅⋅(pong)
 player1    | ... : Stopped player1 (file://court/side1)
@@ -305,12 +328,16 @@ the-ballboy| ... : 🥎 cleared, court ready.
 
 ==== Game statistics
 
-Inspect route stats:
+It's a good moment to look at the game statistics. Get the stats with:
 
 [source,bash]
 ----
 camel get route
 ----
+
+Stats will reveal who's hitting faster (and other measurements as well):
+
+NOTE: Observe `player1` has stopped playing for a moment, but is still very much part of the game.
 
 .Example output
 ----
@@ -320,46 +347,46 @@ camel get route
  22578  player2      player2  file://court/side2?delete=true    x     Started  5m21s    3/3   0.00     23     0         0  2001  2001  2012  2001      0      1m29s/1m27s/-
 ----
 
-*Note:* player1 is stopped but still listed; the ball boy and player2 keep running.
-
 ==== The game resumes
 
-Player1 is ready again. Start the route:
+It seems `player1` sorted out the shoe laces problem and is ready to play again. Get the player in position again with:
 
 [source,bash]
 ----
 camel cmd start-route --id player1
 ----
 
-Player2 serves. Send a ball:
+It's `player2` 's turn to serve, hand him a 🥎
 
 [source,bash]
 ----
 camel cmd send player2 --header CamelFileName=🥎
 ----
 
-The rally continues.
+Here they go again, another insane rally.
 
 ==== Game conditions
 
-Suppose the weather changes: wind, clouds, a bit of rain. We can change the "game conditions" in the YAML.
+It seems the wind is peaking up, some clouds have covered the sky and some spots of rain are dotting the court. Weather conditions can really change the game in tennis.
 
-While the rally is going, edit the files:
+The rain drops make the ball wetter and heavier, the hitting starts to sound funny and the exchanges feel slower. While the intense rally keeps going (ping/pong), make these changes on the players:
 
-* In *`player1.yaml`*: change the log message to `p1ng` and the delay to `{{pace:4000}}` (slower).
-* In *`player2.yaml`*: change the log message to `p0ng` and the delay to `{{pace:4000}}` (slower).
+* In **`player1.yaml`**, change the log message to `p1ng`, and the pace of the ball to `{{pace:4000}}` (slower)
+* In **`player2.yaml`**, change the log message to `p0ng`, and the pace of the ball to `{{pace:4000}}` (slower)
 
-*Note:* With `--dev`, _Camel JBang_ reloads the routes and the new behavior takes effect without restarting.
+NOTE: _Camel JBang_ reacts to live code changes and ensures the new game behaviour takes immediate effect.
 
-In the logs you'll see reload messages. Example output:
+You should see in the terminal _Camel_ reacting with reloads:
 
+.Example output
 ----
 player1    | ... RouteWatcherReloadStrategy : Routes reloaded summary (total:1 started:1)
 player1    | ... RouteWatcherReloadStrategy : Started player1 (file://court/side1) (source: player1.yaml:4)
 ----
 
-Then the slower "p1ng" / "p0ng" messages. Example output:
+Now you'll notice more clearly, the funny sound from the rackets, and the game slowing down:
 
+.Example output
 ----
 player2    | ... :       🥎 ◄━━━⋅⋅⋅(p0ng)
 player1    | ... : (p1ng)⋅⋅⋅━━━► 🥎
@@ -368,37 +395,35 @@ player1    | ... : (p1ng)⋅⋅⋅━━━► 🥎
 
 === Abrupt end
 
-Player1 slips on the wet court and has to leave the game. Stop that route:
+That's unfortunate... `player1` slips on the wet court. Were his shoe laces tied well? We hope he is not hurt. After a close look, it is clear: he is injured and must leave the game.
 
 [source,bash]
 ----
 camel stop player1
 ----
 
-TIP: Run `camel ps` to confirm player1 is no longer in the list.
+TIP: Run `camel ps` and you'll notice `player1` no longer takes part in the game.
 
-Then stop everything:
+At this point, it makes no sense to continue the event, the announcement is made, and the game is halted:
 
 [source,bash]
 ----
 camel stop
 ----
 
-*Note:* With no name, _Camel JBang_ stops all running Camel processes.
+NOTE: When no name is specified, _Camel JBang_ stops all.
 
-That's the end of this match—but you can run the game again anytime.
+We're sorry it ended this way, but don't let it spoil your day, there are many other matches to watch!
 
 🥎🥎🥎
-Keep exploring the workshop for more.
+Keep exploring the workshop to see more.
 🥎🥎🥎
-
-'''
 
 == Clean up your lab folder
 
-Keep your `lab` folder clean for the next exercises.
+Make sure your `lab` folder stays clean in preparation for your next lab exercises.
 
-Run:
+Run the command below:
 
 [source,bash]
 ----
@@ -407,32 +432,29 @@ rm -r *
 
 Your `lab` folder should contain no files or directories.
 
-'''
+Is your `lab` folder empty? Get ready to start working!
 
 == Closing words
 
-This was a short introduction to working quickly with a few _Camel_ route files. _Camel JBang_ has many more commands to help with development.
+This was only a brief introduction on how to work fast with a few _Camel_ files. Camel JBang has many more commands to assist you in your development.
 
-Quick recap of what you used:
+It's worth to quickly recap the collection of commands you just used:
 
-*Running Camel*
+* For running Camel, how to:
+** Run single file
+** Run all
+** Run in the background
+** Run in *dev* mode (hot reload)
 
-* Run a single file: `camel run <file>.yaml`
-* Run all: `camel run *`
-* Run in the background: `camel run <file>.yaml --background`
-* Run with live reload: `camel run <file>.yaml --background --dev`
+* For troubleshooting/monitoring, how to:
+** List running instances
+** Follow logs
+** Start/Stop routes in process
+** Get route details
+** Send message to endpoint
 
-*Troubleshooting and monitoring*
+* For stopping Camel, how to:
+** Stop single instance
+** Stop all
 
-* List running instances: `camel ps`
-* Follow logs: `camel log` or `camel log <route-id>`
-* Start/stop routes: `camel cmd start-route --id <id>`, `camel cmd stop-route --id <id>`
-* Route details: `camel get route`
-* Send a message: `camel cmd send <route-id> --header CamelFileName=🥎`
-
-*Stopping Camel*
-
-* Stop one instance: `camel stop <name>`
-* Stop all: `camel stop`
-
-Continue with other chapters in the workshop to see what _Camel JBang_ can do beyond this intro, and how it fits with other tools for working quickly with _Apache Camel_—from initial concepts to deployment on platforms like OpenShift.
+Continue exploring other examples to discover, not only what _Camel JBang_ can do for you beyond what you've just seen, but also other companion tools empowering the developer to work fast with _Apache Camel_.
