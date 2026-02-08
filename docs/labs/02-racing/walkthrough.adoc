@@ -183,7 +183,7 @@ image::images/camel-jbang.png[align="left", width=40%]
 
 {empty} +
 
-[time=15]
+[time=5]
 [id='racing-track']
 == Build a racing track
 {style-all}
@@ -202,7 +202,17 @@ This chapter is an introductory taste of _Camel JBang_ in a motoracing context: 
 
 Whether you're working in your local machine or from Dev Spaces, you'll need to open a terminal. If you're working locally we recommend using VS Code as the examples below are based on this editor, but you can use any other terminal you prefer.
 
-Open a terminal, create a lab directory and change into it from where you'll work.
+Open a terminal following the steps illustrated below (Dev Spaces example):
+
+image::images/terminal-open.png[align="left", width=40%]
+
+{empty}
+
+The picture below shows the terminal in VS Code.
+
+image::images/terminal.png[align="left", width=100%]
+
+{empty} +
 
 Click the {cp-btn} button (Copy to clipboard), and paste in your terminal:
 
@@ -214,6 +224,10 @@ cd lab
 ----
 --
 
+image::images/terminal-copypaste.png[width=50%]
+
+{empty} +
+
 When created the first time, your `lab` directory is empty:
 
 --
@@ -222,18 +236,6 @@ When created the first time, your `lab` directory is empty:
 &nbsp;&nbsp;📁 *lab* +
 pass:[<mark style="padding-left: 1rem; background-color: white; color: grey"></mark>] [empty]
 --
-
-{empty}
-
-The picture below shows the terminal in VS Code.
-
-image::images/terminal.png[align="left", width=100%]
-
-{blank}
-
-The instructions that follow will prompt you to execute commands. +
-Run them from your terminal. +
-Make sure you run _Camel JBang_ commands from your `lab` directory so that relative paths (such as `file:race-control`) resolve correctly.
 
 {empty} +
 
@@ -245,7 +247,7 @@ This racing track will be straight forward to build:
 
 * It will essentially consist of 3 sectors (s1, s2 and s3).
 * Each sector takes a random amount of time to cover.
-* At the end of sector 3 cars may continue around the track or return to the box area when signaled by race control.
+* After sector 3, cars may continue around the track or return to the box area depending on racecontrol directives (signals).
 
 {empty} +
 
@@ -337,12 +339,19 @@ EOF
 
 [NOTE]
 ====
-The last route retains in memory the last race control directive. +
-When cars complete sector 3, they either:
+Two additional routes provide flow control for the track:
 
-- Carry on and start a new lap +
-- Drive to boxes or, when the race finishes, drive to the podium area. +
+- `signals`: retains in a variable the last race-control directive.
+- `init`: initializes the finish position variable, used to assign the finishing position to the cars.
 ====
+
+You should see the new YAML file in your file explorer:
+
+--
+[.indent2]
+📁 lab +
+pass:[<mark style="padding-left: 1rem; background-color: white; color: purple"><b><i>&nbsp;!&nbsp;&nbsp;</i></b></mark>]*track.yaml* +
+--
 
 {empty} +
 
@@ -350,6 +359,8 @@ When cars complete sector 3, they either:
 
 Everyone is excited with the newly built track in the region. +
 Open its doors so that teams can arrive and drive around it.
+
+Click the {cp-btn} button (Copy to clipboard), and paste in your terminal:
 
 --
 {copypaste}
@@ -374,6 +385,8 @@ Notice in your file explorer a set of directories describing your physical track
 
 image::images/track-folders.png[align="left", width=10%]
 
+NOTE: Make sure you unfold (down arrow *⋁* ) the track folder to display the sectors.
+
 NOTE: The track watches the `race-control` directory, necessary for sector 3.
 
 {empty} +
@@ -391,7 +404,7 @@ Race control is responsible for communicating directives for the teams to follow
 
 {empty} +
 
-Copy the code below to put together your `race-control.yaml` crew:
+Click the {cp-btn} button (Copy to clipboard), and paste in your terminal to put together your `race-control.yaml` crew:
 
 --
 {copypaste}
@@ -445,7 +458,18 @@ EOF
 ----
 --
 
-NOTE: The `race-start-sequence` route is not started automatically (it has `autoStartup: false`). It will be started manually by race control when the time comes to start the race.
+NOTE: The route with id `race-start-sequence` has `autoStartup: false`). It needs to be started manually. Race-control will start it when the time comes to commence the race.
+
+At this point, you should see the following sources in your file explorer:
+
+--
+[.indent2]
+📁 lab +
+pass:[<mark style="padding-left: 1rem; background-color: white; color: purple"><b><i>&nbsp;!&nbsp;&nbsp;</i></b></mark>]*race-control.yaml* +
+pass:[<mark style="padding-left: 1rem; background-color: white; color: purple"><b><i>&nbsp;!&nbsp;&nbsp;</i></b></mark>]*track.yaml* +
+--
+
+{empty} +
 
 Instruct personel to get in position and turn on the race control system. +
 Run the race control system:
@@ -492,7 +516,7 @@ Make sure you follow the commands above. Try again.
 Good! Let's move on to the next step.
 
 
-[time=1]
+[time=4]
 [id='camel-racing-team']
 == Put a team together
 {style-all}
@@ -517,7 +541,7 @@ If you look at the team we're putting together, you'll see their key roles are:
 * To tidy up and leave the venue when the day ends
 ====
 
-Copy the code below to create your racing `team.yaml` file:
+Click the {cp-btn} button (Copy to clipboard), and paste in your terminal to create your racing `team.yaml` file:
 
 --
 {copypaste}
@@ -648,11 +672,25 @@ EOF
 
 {empty} +
 
+At this point, you should see the following sources in your file explorer:
+
+--
+[.indent2]
+📁 lab +
+pass:[<mark style="padding-left: 1rem; background-color: white; color: purple"><b><i>&nbsp;!&nbsp;&nbsp;</i></b></mark>]*race-control.yaml* +
+pass:[<mark style="padding-left: 1rem; background-color: white; color: purple"><b><i>&nbsp;!&nbsp;&nbsp;</i></b></mark>]*team.yaml* +
+pass:[<mark style="padding-left: 1rem; background-color: white; color: purple"><b><i>&nbsp;!&nbsp;&nbsp;</i></b></mark>]*track.yaml* +
+--
+
+{empty} +
+
 === First private session of practice
 
 Everyone is eager to see the new team and its ground breaking racing car. A shakedown will take place during a private session of practice.
 
-Run the team to kickstart the day. Use the {cp-btn} button to copy, then paste in a *new* terminal (so the track keeps running in the first one) and run the command:
+Run the team to kickstart the day. 
+
+Click the {cp-btn} button (Copy to clipboard), and paste in your terminal:
 
 --
 {copypaste}
@@ -669,7 +707,9 @@ image::images/box-camel.png[align="left", width=10%]
 
 [NOTE]
 ====
-Click pass:[<span style="font-size: 35px;">↻</span>] to refresh your project file explorer, and make sure to unfold the boxes directory to see the *Team Camel* car.
+- Click pass:[<span style="font-size: 35px;">↻</span>] to refresh your project file explorer.
+
+- Make sure to *unfold* the boxes directory to see the *Team Camel* car.
 ====
 
 {empty} +
@@ -682,7 +722,7 @@ You are responsible for opening the practice session and signaling the teams to 
 
 What are you waiting for?
 
-Copy and paste in your terminal to issue the command to open the practice session:
+Click the {cp-btn} button (Copy to clipboard), and paste in your terminal to issue the command to open the practice session:
 --
 {copypaste}
 ----
@@ -715,7 +755,7 @@ Let the car cover good distance to gather all the data it needs.
 
 The time window for the morning session is over. It's time to order the team to return to the boxes.
 
-Copy and paste the command below in your terminal:
+Click the {cp-btn} button (Copy to clipboard), and paste in your terminal:
 --
 {copypaste}
 ----
@@ -739,7 +779,7 @@ The more laps it covers the more data the team can collect for analysis and car 
 It was a good day for *Team Camel Racing*, they can bring valuable data to the factory and prepare for the race event. +
 Time to go home and get some well deserved rest.
 
-Copy and paste the command below to stop `Team Camel Racing` from working:
+Click the {cp-btn} button (Copy to clipboard), and paste in your terminal to tell `Team Camel Racing` to end their working day:
 
 --
 {copypaste}
@@ -765,12 +805,12 @@ Make sure you followed the commands above. Try again.
 Good! Team Camel Racing will crunch the data they collected and will get ready for a race day event.
 
 
-[time=1]
+[time=6]
 [id='race-event']
 == Open the race event
 {style-all}
 
-The day of the race is here. Expectations are high and big crowds are expected to attend.
+The day of the race is here. Big crowds are expected to attend.
 
 [NOTE]
 ====
@@ -814,7 +854,7 @@ In summary, the broadcasting system:
 - displays crucial information to spectators
 ====
 
-Copy and paste the code below to create your `broadcast.yaml` file:
+Click the {cp-btn} button (Copy to clipboard), and paste in your terminal to create your `broadcast.yaml` file:
 
 --
 {copypaste}
@@ -946,6 +986,21 @@ EOF
 ----
 --
 
+{empty} +
+
+At this point, you should see the following sources in your file explorer:
+
+--
+[.indent2]
+📁 lab +
+pass:[<mark style="padding-left: 1rem; background-color: white; color: purple"><b><i>&nbsp;!&nbsp;&nbsp;</i></b></mark>]*broadcast.yaml* +
+pass:[<mark style="padding-left: 1rem; background-color: white; color: purple"><b><i>&nbsp;!&nbsp;&nbsp;</i></b></mark>]*race-control.yaml* +
+pass:[<mark style="padding-left: 1rem; background-color: white; color: purple"><b><i>&nbsp;!&nbsp;&nbsp;</i></b></mark>]*team.yaml* +
+pass:[<mark style="padding-left: 1rem; background-color: white; color: purple"><b><i>&nbsp;!&nbsp;&nbsp;</i></b></mark>]*track.yaml* +
+--
+
+{empty} +
+
 The broadcasting system is in place, initiate the live televised transmission:
 
 --
@@ -974,9 +1029,9 @@ NOTE: Later, *development mode* will allow us to readjust the live televised tra
 
 Since your current terminal is now where you will watch the televised race, open a second terminal to work in.
 
-For better watching we recommend you organize your terminals horizontally. If you are using VS Code or DevSpaces, you can do this by dragging the terminal window to the side.
+For better watching we recommend you organize your terminals horizontally. If you are using VS Code or DevSpaces, you can do this with a drag and drop operation.
 
-Perform the actions listed below:
+Follow the steps as illustrated below:
 
 NOTE: The example below is for DevSpaces, but the process is similar for VS Code. +
 If using your local machine, you can equally organize your local terminals horizontally.
@@ -1015,7 +1070,7 @@ For a proper race, we need to deploy multiple participating teams.
 =====
 Team Camel Racing (woot woot!), is the first to open their box.
 
-Copy and paste the command below to deploy the team:
+Click the {cp-btn} button (Copy to clipboard), and paste in your terminal to deploy the team:
 --
 {copypaste}
 ----
@@ -1031,7 +1086,7 @@ camel run team.yaml --name teamCamel --background
 =====
 And our big rivals (boooo!!) have arrived too, Team Cavallino Racing, with an incredible heritage and legendary wins over the course of history.
 
-Copy and paste the command below to deploy the team:
+Click the {cp-btn} button (Copy to clipboard), and paste in your terminalto deploy the team:
 --
 {copypaste}
 ----
@@ -1081,6 +1136,12 @@ image::images/terminal-split.png[align="left", width=30%]
 
 {blank}
 
+Your new terminal will show on the side of the first terminal:
+
+image::images/terminal-split-result.jpg[align="left", width=80%]
+
+{blank}
+
 In the new terminal, copy and paste the command below to listen to team radio messages:
 
 --
@@ -1109,7 +1170,7 @@ Waiting for messages ...
 
 NOTE: You see 2 lines ("waiting for messages...") because the command is capturing messages from both *Team Camel* and *Team Cavallino*.
 
-As the event is underway, you'll see team radio messages appearing in your terminal.
+As the event gets underway, you’ll see team radio messages appearing in your terminal.
 
 {empty} +
 
@@ -1134,12 +1195,12 @@ Make sure you followed the commands above. Try again.
 Nice! it'll be interesting to listen to the team messages as the race progresses.
 
 
-[time=1]
+[time=6]
 [id='race-start']
 == Grid formation and race start
 {style-all}
 
-The grandstands are full and the crowd is excited.
+The grandstands are full and crowds are excited.
 
 We're now just moments away from the scheduled race start. As always, launching the race follows a strict protocol to ensure maximum safety and fairness for all competitors.
 
@@ -1192,7 +1253,7 @@ Mechanics and all other crew members have now left the grid. It is just the driv
 The start sequence is more intricate than people think. To prevent any human error, it's been all automated.
 We rely on the automatic procedure to signal the start of the race.
 
-Copy and paste the command below to start the race:
+Click the {cp-btn} button (Copy to clipboard), and paste in your terminal to start the race:
 --
 {copypaste}
 ----
@@ -1256,7 +1317,8 @@ Innevitably the cost of broadcasting races isn't econically viable unless anothe
 
 This is when the *development mode* of Camel JBang comes in handy, allowing for on-the-fly changes to the broadcast system while the live transmission is ongoing.
 
-Copy and paste the code below:
+The command below appends code to `broadcast.yaml`. +
+Click the {cp-btn} button (Copy to clipboard), and paste in your terminal:
 
 --
 {copypaste}
@@ -1278,7 +1340,7 @@ EOF
 ----
 --
 
-NOTE: The new route is added to the `broadcast.yaml` file opening a new interface to display commercials. 
+NOTE: The new route is added to the `broadcast.yaml`. It opens a new interface to display commercials. 
 
 You'll see the broadcast process react to the code changes and hot reload the routes. +
 Your terminal output will display something like:
@@ -1302,7 +1364,7 @@ NOTE: Notice highlighted in yellow the new route `tv-commercials` now also inclu
 
 Under our new contractual terms, our obligation is to show a few commercials during the race.
 
-Copy and paste the command below to inject a commercial:
+Inject a commercial with the command below:
 
 --
 {copypaste}
@@ -1370,11 +1432,13 @@ Follow race stats like number of laps, race duration, sector times with the `get
 --
 {copypaste}
 ----
-camel get route track --short-uri --watch
+camel get route track --short-uri
 ----
 --
 
-NOTE: the command indicates to collect `track` data. The `--watch` flag keeps the command running and updates the output as the race progresses.
+NOTE: the command indicates to monitor route data from the `track` process.
+
+TIP: You can hook the command using the `--watch` flag for continuous monitoring of the race progress (kbd:[Ctrl+C] to stop).
 
 You should see lines like:
 
@@ -1393,7 +1457,7 @@ NOTE: The example above shows the duration of the race so far, number of laps co
 
 === Last lap
 
-The on-track battle is heating up and laps are flying by quickly. Drivers are running out of laps as the race is almost over.
+The on-track battle is heating up and laps are flying by quickly. Drivers are running out of time as the race is almost over.
 
 As the race director, you need to signal the last lap: 
 
@@ -1496,11 +1560,12 @@ You should see the logs from the track and teams:
 
 ++++
 <pre style="background-color: #1e1e1e; color: #d4d4d4; padding: 12px; font-family: monospace; font-size: 12px; line-height: 1.1;">
-Shutting down Camel integration (PID: 22901)
-Shutting down Camel integration (PID: 22675)
-Shutting down Camel integration (PID: 22480)
-Shutting down Camel integration (PID: 22321)
-Shutting down Camel integration (PID: 22167)
+Shutting down Camel integration (PID: 4234)
+Shutting down Camel integration (PID: 4890)
+Shutting down Camel integration (PID: 7544)
+Shutting down Camel integration (PID: 8680)
+Shutting down Camel integration (PID: 9077)
+Shutting down Camel integration (PID: 9448)
 </pre>
 ++++
 
@@ -1508,6 +1573,11 @@ TIP: Run `camel ps` to confirm all running processes have been stopped.
 
 {empty} +
 
+=== Stop listening for radio messages
+
+Where your radio messages are displayed, press kbd:[Ctrl+C] to stop receiving transmissions.
+
+{empty} +
 
 === Clean up your lab folder
 
@@ -1545,18 +1615,19 @@ Get ready to start working !
 
 This was a fun introduction to Camel JBang, a tool that allows you to quickly prototype and test integrations.
 
-Let's do a quick review of the commands you used in this lab:
+Let's do a quick review of the types of commands you learned about in this lab:
 
+*For running Camel, how to:*
 
-* For running Camel, how to:
-** Run an integration
-** Run in the background
-** Run in *dev* mode (hot reload)
-** Run with properties
+** Run integrations
+** Run them in the background
+** Run them in *dev* mode (hot reload)
+** Run them with properties
 
-{blank}
+{empty} +
 
-* For troubleshooting/monitoring, how to:
+*For troubleshooting/monitoring, how to:*
+
 ** List running instances
 ** Start/Stop routes in process
 ** Make live code changes (dev mode)
@@ -1564,9 +1635,10 @@ Let's do a quick review of the commands you used in this lab:
 ** Send messages to endpoints
 ** Receive message with consumers
 
-{blank}
+{empty} +
 
-* For stopping Camel, how to:
+*For stopping Camel, how to:*
+
 ** Stop single instance
 ** Stop all processes
 

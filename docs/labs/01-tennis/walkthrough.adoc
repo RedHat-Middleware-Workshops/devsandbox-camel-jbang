@@ -235,9 +235,19 @@ This chapter is an introductory taste of _Camel JBang_ showing you a basic group
 
 === Open a terminal
 
-Whether you're workking in your local machine or from Dev Spaces, you'll need to open a terminal. If you're working in your local machine we recommend using VS Code as the examples below are based on this editor, but you can use any other terminal you prefer.
+Whether you're working in your local machine or from Dev Spaces, you'll need to open a terminal. If you're working locally we recommend using VS Code as the examples below are based on this editor, but you can use any other terminal you prefer.
 
-Open a terminal, create a lab directory and change into it from where you'll work.
+Open a terminal following the steps illustrated below (Dev Spaces example):
+
+image::images/terminal-open.png[align="left", width=40%]
+
+{empty}
+
+The picture below shows the terminal in VS Code.
+
+image::images/terminal.png[align="left", width=100%]
+
+{empty} +
 
 Click the {cp-btn} button (Copy to clipboard), and paste in your terminal:
 
@@ -249,6 +259,10 @@ cd lab
 ----
 --
 
+image::images/terminal-copypaste.png[width=50%]
+
+{empty} +
+
 When created the first time, your `lab` directory is empty:
 
 --
@@ -257,17 +271,6 @@ When created the first time, your `lab` directory is empty:
 &nbsp;&nbsp;📁 *lab* +
 pass:[<mark style="padding-left: 1rem; background-color: white; color: grey"></mark>] [empty]
 --
-
-{empty}
-
-The picture below shows the terminal in VS Code.
-
-image::images/crw-terminal.png[align="left", width=100%]
-
-{blank}
-
-The instructions that follow will prompt you to execute commands. +
-Run them from your terminal.
 
 {empty} +
 
