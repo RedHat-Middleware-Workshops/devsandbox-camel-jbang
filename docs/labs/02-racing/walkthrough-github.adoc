@@ -1,3 +1,5 @@
+:experimental:
+
 = Camel JBang - Full Throttle
 
 Jump into Camel JBang with a thrilling motor racing simulation. Prototype, iterate, and test your integrations at maximum speed.
@@ -1110,11 +1112,7 @@ camel get route track --short-uri
 
 NOTE: The command indicates to monitor route data from the `track` process.
 
-TIP: You can hook the command using the `--watch` flag for continuous monitoring of the race progress (*Ctrl+C* to stop).
-
-:experimental:
-
-TIP: You can hook the command using the `--watch` flag for continuous monitoring of the race progress (kbd:[Ctrl+C] to stop).
+TIP: You can hook the command using the `--watch` flag for continuous monitoring of the race progress (press kbd:[Ctrl+C] to stop).
 
 You should see lines like:
 
@@ -1126,7 +1124,9 @@ You should see lines like:
 99656  track  sector3  file://track/s3              x     Started  3m18s    3/5   0.00     12     0         0  4946  4408  5988  4300   -155        11s/7s/-
 ----
 
-NOTE: The example above shows the duration of the race so far, number of laps completed, and best sector times (in milliseconds).
+NOTE: The example above shows the duration (`3m18s`) of the race so far, number of laps completed (`12`), and best sector times (in milliseconds): `4098` for Sector 1, `4071` for Sector 2, and `4408` for Sector 3.
+
+{empty} +
 
 === Last lap
 
@@ -1154,9 +1154,11 @@ Watch the cars cross the finish line:
 [       ]        |         |         |         | 🏁 🐎‾ō͡≡o˞̶
 ----
 
-... and *Camel Racing* WINS !!!!!!
+pass:[...] and *Camel Racing* WINS !!!!!!
 
 NOTE: Notice in the example above *teamCamel* making a move on *teamCavallino* in the last turns to take the trophy home.
+
+{empty} +
 
 === Fascinating radio messages
 
@@ -1176,6 +1178,8 @@ Received Message: (6)
   🐎 Awesome drive! great result for the team.
 ----
 
+{empty} +
+
 === Watch the winners lift the trophy
 
 What a fabulous race! A crowd gathers around the podium area, hurry up, leave your seat in the stands and join them to see the champions lift the trophy.
@@ -1185,6 +1189,8 @@ image::images/track-podium.png[width=15%]
 The crowd is going wild as the winners lift the trophy.
 
 Did you see the winners lift the trophy? Good! The race was a success and the winners are celebrating their victory.
+
+{empty} +
 
 == Packing and closing down
 
@@ -1213,9 +1219,13 @@ Shutting down Camel integration (PID: 9448)
 
 TIP: Run `camel ps` to confirm all running processes have been stopped.
 
+{empty} +
+
 === Stop listening for radio messages
 
-Where your radio messages are displayed, press *Ctrl+C* to stop receiving transmissions.
+Where your radio messages are displayed, press kbd:[Ctrl+C] to stop receiving transmissions.
+
+{empty} +
 
 === Clean up your lab folder
 
@@ -1232,6 +1242,8 @@ Your `lab` folder should contain no files or directories.
 
 Is your `lab` folder empty? Get ready to start working!
 
+{empty} +
+
 == Closing words
 
 This was a fun introduction to Camel JBang, a tool that allows you to quickly prototype and test integrations.
@@ -1245,6 +1257,8 @@ Let's do a quick review of the types of commands you learned about in this lab:
 * Run them in *dev* mode (hot reload)
 * Run them with properties
 
+{empty} +
+
 *For troubleshooting/monitoring, how to:*
 
 * List running instances
@@ -1254,9 +1268,13 @@ Let's do a quick review of the types of commands you learned about in this lab:
 * Send messages to endpoints
 * Receive message with consumers
 
+{empty} +
+
 *For stopping Camel, how to:*
 
 * Stop single instance
 * Stop all processes
+
+{empty} +
 
 Continue exploring other examples to discover what _Camel JBang_ can do beyond this intro, and how it fits with other tools for working quickly with _Apache Camel_.
