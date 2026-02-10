@@ -1671,7 +1671,7 @@ Let's do a quick review of the types of commands you learned about in this lab:
 
 === Take the code further
 
-If you enjoyed the playful theme of the lab and you'd like to take it further with your own experiments, read below some suggested ideas for you, but you're ultimately the creator of your own adventures!
+If you enjoyed the playful theme of the lab and you'd like to take it further with your own experiments, here are some suggested ideas below, but you're ultimately the creator of your own adventures!
 
 {empty} +
 
@@ -1700,7 +1700,7 @@ What about starting with a simple one using simple Camel modifications? Try to t
 
 ==== Play more with Camel JBang's *dev* mode
 
-Think of ways to introduce weather variables to the race. For instance, you could redifine the pace of the cars based on the weather conditions. Rainy conditions could make the cars slower.
+Think of ways to introduce weather variables to the race. For instance, you could redefine the pace of the cars based on the weather conditions. Rainy conditions could make the cars slower.
 
 Another idea would be to factor in tire performance, a slick tire for dry conditions delivers a fast pace, but a wet tire in the rain could make the cars slower.
 
@@ -1732,7 +1732,7 @@ AI can generate fun, contextual communications between teams and drivers.
 
 {empty} +
 
-==== Be the creator of your own adventure
+==== Take the Wheel: Your Custom Race
 
 The possibilities are endless. +
 You're the creator of your own adventure.
